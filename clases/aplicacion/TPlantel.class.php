@@ -5,8 +5,6 @@
 * @package aplicacion
 * @autor Hugo Santiago hugo.santiago@iebo.edu.mx
 **/
-
-
 class TPlantel{
 	private $idPlantel;
 	private $nombre;

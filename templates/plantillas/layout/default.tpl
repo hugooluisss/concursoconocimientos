@@ -64,7 +64,7 @@
 							<ul class="dropdown-menu">
 								<!-- The user image in the menu -->
 								<li class="user-header">
-									<img src="?mod=cusuarios&action=getFoto&ancho=180&alto=180" class="img-circle" alt="User Image"/>
+									<!--<img src="?mod=cusuarios&action=getFoto&ancho=180&alto=180" class="img-circle" alt="User Image"/>-->
 									<p>
 										{$PAGE.usuario->getNombre()}
 										<small>{$PAGE.usuario->getCorreo()}</small>
@@ -106,26 +106,24 @@
 					</li>
 					{/if}
 					{if $PAGE.usuario->getTipo() eq 1}
-					<li class="{if in_array($PAGE.modulo, array('modulos'))}active{/if} treeview">
+					<li class="{if in_array($PAGE.modulo, array('estados'))}active{/if} treeview">
 						<a href="#">
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'modulos'}class="active"{/if}><a href="modulos"><i class="fa fa-briefcase"></i> Módulos</a></li>
+							<li {if $PAGE.modulo eq 'estados'}class="active"{/if}><a href="estados"><i class="fa fa-adjust"></i> Estados</a></li>
 						</ul>
 					</li>
 					{/if}
-					{if $PAGE.usuario->getTipo() eq 1}
-					<li class="{if in_array($PAGE.modulo, array('clientes', 'pagos'))}active{/if} treeview">
+					
+					<li class="{if in_array($PAGE.modulo, array('concursos'))}active{/if} treeview">
 						<a href="#">
-							<span>Cartera</span> <i class="fa fa-angle-left pull-right"></i>
+							<span>Concursos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li {if $PAGE.modulo eq 'clientes'}class="active"{/if}><a href="clientes"><i class="fa fa-user"></i> Clientes</a></li>
-							<li {if $PAGE.modulo eq 'pagos'}class="active"{/if}><a href="pagos"><i class="fa fa-money"></i> Pagos</a></li>
+							<li {if $PAGE.modulo eq 'concursos'}class="active"{/if}><a href="concursos"><i class="fa fa-graduation-cap"></i> Lista</a></li>
 						</ul>
 					</li>
-					{/if}
 				</ul>
 			</section>
 			<!-- /.sidebar -->

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-15 10:36:36
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-16 09:47:27
          compiled from "templates/plantillas/layout/default.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2892515405779d4757b0160-13665111%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '88f47345f87357691db158f81dd14f424f0cd759' => 
     array (
       0 => 'templates/plantillas/layout/default.tpl',
-      1 => 1471275394,
+      1 => 1471358836,
       2 => 'file',
     ),
   ),
@@ -108,7 +108,7 @@ plugins/upload/css/jquery.fileupload.css">
 							<ul class="dropdown-menu">
 								<!-- The user image in the menu -->
 								<li class="user-header">
-									<img src="?mod=cusuarios&action=getFoto&ancho=180&alto=180" class="img-circle" alt="User Image"/>
+									<!--<img src="?mod=cusuarios&action=getFoto&ancho=180&alto=180" class="img-circle" alt="User Image"/>-->
 									<p>
 										<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombre();?>
 
@@ -152,26 +152,24 @@ plugins/upload/css/jquery.fileupload.css">
 					</li>
 					<?php }?>
 					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getTipo()==1){?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('modulos'))){?>active<?php }?> treeview">
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('estados'))){?>active<?php }?> treeview">
 						<a href="#">
 							<span>Catálogos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='modulos'){?>class="active"<?php }?>><a href="modulos"><i class="fa fa-briefcase"></i> Módulos</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='estados'){?>class="active"<?php }?>><a href="estados"><i class="fa fa-adjust"></i> Estados</a></li>
 						</ul>
 					</li>
 					<?php }?>
-					<?php if ($_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getTipo()==1){?>
-					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('clientes','pagos'))){?>active<?php }?> treeview">
+					
+					<li class="<?php if (in_array($_smarty_tpl->tpl_vars['PAGE']->value['modulo'],array('concursos'))){?>active<?php }?> treeview">
 						<a href="#">
-							<span>Cartera</span> <i class="fa fa-angle-left pull-right"></i>
+							<span>Concursos</span> <i class="fa fa-angle-left pull-right"></i>
 						</a>
 						<ul class="treeview-menu">
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='clientes'){?>class="active"<?php }?>><a href="clientes"><i class="fa fa-user"></i> Clientes</a></li>
-							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='pagos'){?>class="active"<?php }?>><a href="pagos"><i class="fa fa-money"></i> Pagos</a></li>
+							<li <?php if ($_smarty_tpl->tpl_vars['PAGE']->value['modulo']=='concursos'){?>class="active"<?php }?>><a href="concursos"><i class="fa fa-graduation-cap"></i> Lista</a></li>
 						</ul>
 					</li>
-					<?php }?>
 				</ul>
 			</section>
 			<!-- /.sidebar -->

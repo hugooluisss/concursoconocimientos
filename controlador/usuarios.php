@@ -3,14 +3,12 @@ global $objModulo;
 switch($objModulo->getId()){
 	case 'admonUsuarios':
 		$db = TBase::conectaDB();
-		global $sesion;
-		$usuario = new TUsuario($sesion['usuario']);
 
-		$rs = $db->Execute("select * from tipoUsuario");
+		$rs = $db->Execute("select * from tipousuario");
 		
 		$datos = array();
 		while(!$rs->EOF){
-			$datos[$rs->fields['idTipoUsuario']] = $rs->fields['nombre'];
+			$datos[$rs->fields['idTipo']] = $rs->fields['nombre'];
 			$rs->moveNext();
 		}
 		
@@ -18,20 +16,16 @@ switch($objModulo->getId()){
 	break;
 	case 'listaUsuarios':
 		$db = TBase::conectaDB();
-		global $sesion;
-		$usuario = new TUsuario($sesion['usuario']);
-		$rs = $db->Execute("select * from usuario");
+		
+		$rs = $db->Execute("select num_personal from usuario");
 		$datos = array();
 		while(!$rs->EOF){
-			$obj = new TUsuario($rs->fields['idUsuario']);
-			$rs->fields['tipo'] = $obj->getTipo();
-			$rs->fields['json'] = json_encode($rs->fields);
-			array_push($datos, $rs->fields);
+			array_push($datos, array("obj" => new TTrabajador($rs->fields['num_personal']), "user" => new TUsuario($rs->fields['num_personal'])));
 			$rs->moveNext();
 		}
 		$smarty->assign("lista", $datos);
 		
-		$rs = $db->Execute("select * from tipoUsuario");
+		$rs = $db->Execute("select * from tipousuario");
 		$datos = array();
 		while(!$rs->EOF){
 			array_push($datos, $rs->fields);
@@ -39,62 +33,61 @@ switch($objModulo->getId()){
 		}
 		$smarty->assign("tipoUsuario", $datos);
 	break;
-	case 'usuarioDatosPersonales':
-		global $sesion;
-		$usuario = new TUsuario($sesion['usuario']);
-		$smarty->assign("nombre", $usuario->getNombre());
-		$smarty->assign("app", $usuario->getApp());
-		$smarty->assign("apm", $usuario->getApm());
-	break;
 	case 'cusuarios':
 		switch($objModulo->getAction()){
-			case 'add':
-				$db = TBase::conectaDB();
-				$obj = new TUsuario();
+			case 'autocomplete':
+				$db = TBase::conectaDB("sip");
+				$rs = $db->Execute("select num_personal from ficha_personal 
+					where nombres like '%".$_GET['term']."%' 
+						or apellido_p like '%".$_GET['term']."%' 
+						or apellido_m like '%".$_GET['term']."%'
+						or concat(nombres, ' ', apellido_p, ' ', apellido_m) like '%".$_GET['term']."%'
+						or concat(apellido_p, ' ', apellido_m, ' ', nombres) like '%".$_GET['term']."%'
+				");
 				
-				$rs = $db->Execute("select idUsuario from usuario where email = '".$_POST['email']."'");
-				
-				if (!$rs->EOF){ #si es que encontró el email
-					if ($rs->fields["idUsuario"] <> $_POST['id']){
-						$obj->setId($rs->fields['idUsuario']);
-						echo json_encode(array("band" => false, "mensaje" => "El email ya se encuentra registrado con el usuario ".$obj->getNombreCompleto()));
-						exit(1);
-					}
+				$obj = new TTrabajador;
+				$datos = array();
+				while(!$rs->EOF){
+					$el = array();
+					
+					$obj->setId($rs->fields['num_personal']);
+					$el['id'] = $obj->getId();
+					$el['label'] = $obj->getNombreCompleto();
+					$el['nip'] = $obj->getPass() <> '';
+					$el['identificador'] = $obj->getId();
+					
+					array_push($datos, $el);
+					$rs->moveNext();
 				}
-
-				$obj = new TUsuario();
 				
-				$obj->setId($_POST['id']);
-				$obj->setNombre($_POST['nombre']);
-				$obj->setApellidos($_POST['apellidos']);
-				$obj->setEmail($_POST['email']);
-				$obj->setPass($_POST['pass']);
-				$obj->setTipo($_POST['tipo']);
-
-				echo json_encode(array("band" => $obj->guardar()));
+				echo json_encode($datos);
+			break;
+			case 'add':
+				$obj = new TUsuario($_POST['num_personal']);
+				
+				echo json_encode(array("band" => $obj->add()));
 			break;
 			case 'del':
 				$obj = new TUsuario($_POST['usuario']);
-				echo json_encode(array("band" => $obj->eliminar()));
+				echo json_encode(array("band" => $obj->del()));
 			break;
-			case 'saveDatosPersonales':
-				global $sesion;
-				
-				$obj = new TUsuario();
-				$obj->setId($sesion['usuario']);
-				$obj->setNombre($_POST['nombre']);
-				$obj->setApellidos($_POST['apellidos']);
-				
-				echo json_encode(array("band" => $obj->guardar()));
+			case 'setPerfil':
+				$obj = new TUsuario($_POST['usuario']);
+				echo json_encode(array("band" => $obj->setTipo($_POST["tipo"])));
 			break;
-			case 'savePassword':
-				global $sesion;
+			case 'getFoto':
+		        $ancho = $_GET["ancho"] == ''?25:$_GET["ancho"]; 
+		        $alto = $_GET["alto"] == ''?25:$_GET["alto"]; 
+		        
+		        $fuente = @imagecreatefromjpeg(str_replace(" ", "%20", $datosPlantilla['urlFotosTrabajadores'].$sesion['fotografia']));
+		        $imgAncho = imagesx ($fuente); 
+				$imgAlto =imagesy($fuente); 
+				$imagen = imagecreatetruecolor($ancho,$alto); 
 				
-				$obj = new TUsuario();
-				$obj->setId($sesion['usuario']);
-				$obj->setPass($_POST['pass']);
+				imagecopyresampled($imagen,$fuente,0,0,0,0,$ancho,$alto,$imgAncho,$imgAlto); 
 				
-				echo json_encode(array("band" => $obj->guardar()));
+				Header("Content-type: image/jpg"); 
+				imagejpeg($imagen);
 			break;
 		}
 	break;

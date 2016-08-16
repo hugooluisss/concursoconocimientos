@@ -1,53 +1,30 @@
 $(document).ready(function(){
 	getLista();
-	
-	$("#panelTabs li a[href=#add]").click(function(){
-		$("#frmAdd").get(0).reset();
-		$("#id").val("");
-		$("form:not(.filter) :input:visible:enabled:first").focus();
-	});
-	
-	$("#btnReset").click(function(){
-		$('#panelTabs a[href="#listas"]').tab('show');
-	});
-	
-	$("#frmAdd").validate({
-		debug: true,
-		rules: {
-			txtEmail: "required",
-			txtPass: "required"
-		},
-		wrapper: 'span', 
-		messages: {
-			txtEmail: "Este campo es necesario",
-			txtPass: "Este campo es necesario"
-		},
-		submitHandler: function(form){
-		
+	$("#txtTrabajador").autocomplete({
+		source: "index.php?mod=cusuarios&action=autocomplete",
+		minLength: 2,
+		select: function(e, el){
 			var obj = new TUsuario;
-			obj.add(
-				$("#id").val(), 
-				$("#txtNombre").val(), 
-				$("#txtApellidos").val(),
-				$("#txtEmail").val(),
-				$("#txtPass").val(),
-				$("#selTipo").val(),
-				{
-					after: function(datos){
-						if (datos.band){
+			var band = true;
+			
+			if (!el.item.nip)
+				band = confirm("Este trabajador no tiene NIP asignado, no tendrá acceso al sistema, ¿aún así deseas agregarlo?");
+			
+			if (band)
+				obj.add(el.item.identificador, {
+					after: function(data){
+						if(!data.band)
+							alert("Upps No se agregó el usuario");
+						else
 							getLista();
-							$("#frmAdd").get(0).reset();
-							$('#panelTabs a[href="#listas"]').tab('show');
-						}else{
-							alert("Upps... " + datos.mensaje);
-						}
+							
+						$("#txtTrabajador").val("");
 					}
-				}
-			);
-        }
-
-    });
-		
+				});
+					
+		}
+	});
+	
 	function getLista(){
 		$.get("?mod=listaUsuarios", function( data ) {
 			$("#dvLista").html(data);
@@ -55,7 +32,7 @@ $(document).ready(function(){
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
 					var obj = new TUsuario;
-					obj.del($(this).attr("usuario"), {
+					obj.del($(this).attr("trabajador"), {
 						after: function(data){
 							getLista();
 						}
@@ -63,16 +40,23 @@ $(document).ready(function(){
 				}
 			});
 			
-			$("[action=modificar]").click(function(){
-				var el = jQuery.parseJSON($(this).attr("datos"));
-				
-				$("#id").val(el.idUsuario);
-				$("#txtNombre").val(el.nombre);
-				$("#txtApellidos").val(el.apellidos);
-				$("#txtEmail").val(el.email);
-				$("#txtPass").val(el.pass);
-				$("#selTipo").val(el.idTipo);
-				$('#panelTabs a[href="#add"]').tab('show');
+			$(".tipo").change(function(){
+				if (confirm("¿Seguro de hacer el cambio de perfil de usuario?")){
+					var obj = new TUsuario;
+					var el = $(this);
+					obj.setPerfil(el.attr("user"), el.val(), {
+						before: function(){
+							el.disabled = true;
+						},
+						after: function(data){
+							el.enabled = false;
+							if (data.band){
+								getLista();
+								alert("Perfil de usuario modificado");
+							}
+						}
+					});
+				}
 			});
 			
 			$("#tblUsuarios").DataTable({

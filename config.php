@@ -1,5 +1,5 @@
 <?php
-define('SISTEMA', 'iLife protected Panel Admin');
+define('SISTEMA', 'Concurso de conocimiento - Panel Admin');
 define('VERSION', 'v 1.0');
 define('ALIAS', '');
 define('AUTOR', 'Hugo Luis Santiago Altamirano');
@@ -89,86 +89,51 @@ $conf['panelPrincipal'] = array(
 	'js' => array(),
 	'capa' => LAYOUT_DEFECTO);
 
-#Módulos
-$conf['modulos'] = array(
-	'controlador' => 'modulos.php',
-	'vista' => 'modulos/panel.tpl',
-	'descripcion' => 'Administración de modulos',
+/* Estados */
+$conf['estados'] = array(
+	'controlador' => 'estados.php',
+	'vista' => 'estados/panel.tpl',
+	'descripcion' => 'Vista del panel de estados',
 	'seguridad' => true,
-	'js' => array('modulo.class.js'),
-	'jsTemplate' => array('modulos.js'),
+	'js' => array('estado.class.js'),
+	'jsTemplate' => array('estados.js'),
 	'capa' => LAYOUT_DEFECTO);
-
-$conf['listaModulos'] = array(
-	'controlador' => 'modulos.php',
-	'vista' => 'modulos/lista.tpl',
-	'descripcion' => 'Lista de modulos',
+	
+$conf['cestados'] = array(
+	'controlador' => 'estados.php',
+	'descripcion' => 'Controlador de estados',
+	'seguridad' => true,
+	'changeSlashes' => false,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaEstados'] = array(
+	'controlador' => 'estados.php',
+	'vista' => 'estados/lista.tpl',
+	'descripcion' => 'Lista de estados',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 	
-$conf['cmodulos'] = array(
-	'controlador' => 'modulos.php',
-	'descripcion' => 'Controlador de modulos',
+/* Concurso de conocimientos */
+$conf['concursos'] = array(
+	'controlador' => 'concursos.php',
+	'vista' => 'concursos/panel.tpl',
+	'descripcion' => 'Vista del panel de concursos',
 	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-
-#Clientes
-$conf['clientes'] = array(
-	'controlador' => 'clientes.php',
-	'vista' => 'clientes/panel.tpl',
-	'descripcion' => 'Administración de clientes',
-	'seguridad' => true,
-	'js' => array('cliente.class.js'),
-	'jsTemplate' => array('clientes.js'),
+	'js' => array('concurso.class.js'),
+	'jsTemplate' => array('concursos.js'),
 	'capa' => LAYOUT_DEFECTO);
-
-$conf['listaClientes'] = array(
-	'controlador' => 'clientes.php',
-	'vista' => 'clientes/lista.tpl',
-	'descripcion' => 'Lista de clientes',
+	
+$conf['cconcursos'] = array(
+	'controlador' => 'concursos.php',
+	'descripcion' => 'Controlador de concursos',
 	'seguridad' => true,
+	'changeSlashes' => false,
 	'capa' => LAYOUT_AJAX);
 	
-$conf['cclientes'] = array(
-	'controlador' => 'clientes.php',
-	'descripcion' => 'Controlador de clientes',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['listaClientePolizas'] = array(
-	'controlador' => 'clientes.php',
-	'vista' => 'clientes/listaPolizas.tpl',
-	'descripcion' => 'Lista de polizas de un cliente',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-#Pagos
-$conf['pagos'] = array(
-	'controlador' => 'pagos.php',
-	'vista' => 'pagos/panel.tpl',
-	'descripcion' => 'Administración de pagos',
-	'seguridad' => true,
-	'js' => array('pago.class.js', 'cliente.class.js'),
-	'jsTemplate' => array('pagos.js'),
-	'capa' => LAYOUT_DEFECTO);
-
-$conf['listaPagos'] = array(
-	'controlador' => 'pagos.php',
-	'vista' => 'pagos/lista.tpl',
-	'descripcion' => 'Lista de pagos',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['cpagos'] = array(
-	'controlador' => 'pagos.php',
-	'descripcion' => 'Controlador de pagos',
-	'seguridad' => true,
-	'capa' => LAYOUT_AJAX);
-	
-$conf['listaClientesPagos'] = array(
-	'controlador' => 'clientes.php',
-	'vista' => 'clientes/lista.tpl',
-	'descripcion' => 'Lista de clientes',
+$conf['listaConcursos'] = array(
+	'controlador' => 'concursos.php',
+	'vista' => 'concursos/lista.tpl',
+	'descripcion' => 'Lista de concursos',
 	'seguridad' => true,
 	'capa' => LAYOUT_AJAX);
 ?>

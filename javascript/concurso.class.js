@@ -1,17 +1,19 @@
-TModulo = function(){
+TConcurso = function(){
 	var self = this;
 	
-	this.add = function(id,	nombre, importe, fn){
+	this.add = function(id, nombre, descripcion, estado, periodo, fn){
 		if (fn.before !== undefined) fn.before();
 		
-		$.post('cmodulos', {
-				"id": id,
+		$.post('cconcursos', {
+				"id": id, 
 				"nombre": nombre,
-				"importe": importe,
-				"action": "add"
+				"descripcion": descripcion,
+				"estado": estado,
+				"periodo": periodo,
+				"action": "guardar"
 			}, function(data){
 				if (data.band == 'false')
-					console.log(data.mensaje);
+					console.log("No se pudo guardar el curso");
 					
 				if (fn.after !== undefined)
 					fn.after(data);
@@ -19,14 +21,14 @@ TModulo = function(){
 	};
 	
 	this.del = function(id, fn){
-		$.post('cmodulos', {
+		$.post('cconcursos', {
 			"id": id,
 			"action": "del"
 		}, function(data){
 			if (fn.after != undefined)
 				fn.after(data);
 			if (data.band == 'false'){
-				alert("Ocurrió un error al eliminar el Módulo");
+				console.log("Ocurrió un error al eliminar el curso");
 			}
 		}, "json");
 	};

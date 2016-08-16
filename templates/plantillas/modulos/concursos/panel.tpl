@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">Administración de módulos</h1>
+		<h1 class="page-header">Administración de concursos de conocimientos</h1>
 	</div>
 </div>
 
@@ -21,15 +21,30 @@
 			<div class="box">
 				<div class="box-body">			
 					<div class="form-group">
-						<label for="txtNombre" class="col-lg-2">Nombre completo</label>
-						<div class="col-lg-6">
+						<label for="txtNombre" class="col-lg-2">Nombre</label>
+						<div class="col-lg-3">
 							<input class="form-control" id="txtNombre" name="txtNombre">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="txtImporte" class="col-lg-2">Importe</label>
+						<label for="txtDescripcion" class="col-lg-2">Descripción</label>
 						<div class="col-lg-3">
-							<input class="form-control" id="txtImporte" name="txtImporte" type="text">
+							<input class="form-control" id="txtDescripcion" name="txtDescripcion">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="selEstado" class="col-lg-2">Estado</label>
+						<div class="col-lg-3">
+							<select class="form-control" id="selEstado" name="selEstado">
+								<option value="1">Publicado
+								<option value="0">No publicado
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="txtPeriodo" class="col-lg-2">Periodo</label>
+						<div class="col-lg-3">
+							<input class="form-control" id="txtPeriodo" name="txtPeriodo">
 						</div>
 					</div>
 				</div>

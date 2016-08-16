@@ -15,31 +15,30 @@ $(document).ready(function(){
 		debug: true,
 		rules: {
 			txtNombre: "required",
-			txtImporte: {
-				required: true,
-				number: true,
-				min: 1
-			}
+			txtDescripcion: "required",
+			txtPeriodo: "required"
 		},
 		wrapper: 'span', 
 		submitHandler: function(form){
-			var obj = new TModulo;
+			var obj = new TConcurso;
 			obj.add(
 				$("#id").val(), 
-				$("#txtNombre").val(), 
-				$("#txtImporte").val(),
+				$("#txtNombre").val(),
+				$("#txtDescripcion").val(),
+				$("#selEstado").val(),
+				$("#txtPeriodo").val(),
 				{
 					before: function(){
 						$(form).find("[type=submit]").prop("disabled", true);
 					},
-					after: function(datos){
+					after: function(resp){
 						$(form).find("[type=submit]").prop("disabled", false);
-						if (datos.band){
+						if (resp.band){
 							getLista();
 							$("#frmAdd").get(0).reset();
 							$('#panelTabs a[href="#listas"]').tab('show');
 						}else{
-							alert("Upps... No se pudo guardar el módulo");
+							alert("Upps... No se pudo guardar");
 						}
 					}
 				}
@@ -49,12 +48,12 @@ $(document).ready(function(){
     });
 		
 	function getLista(){
-		$.get("?mod=listaModulos", function( data ) {
+		$.get("?mod=listaConcursos", function( data ) {
 			$("#dvLista").html(data);
 			
 			$("[action=eliminar]").click(function(){
 				if(confirm("¿Seguro?")){
-					var obj = new TModulo;
+					var obj = new TConcurso;
 					obj.del($(this).attr("identificador"), {
 						after: function(data){
 							getLista();
@@ -66,21 +65,24 @@ $(document).ready(function(){
 			$("[action=modificar]").click(function(){
 				var el = jQuery.parseJSON($(this).attr("datos"));
 				
-				$("#id").val(el.idUsuario);
+				$("#id").val(el.idConcurso);
 				$("#txtNombre").val(el.nombre);
-				$("#txtImporte").val(el.importe);
+				$("#txtDescripcion").val(el.descripcion);
+				$("#selEstado").val(el.estado);
+				$("#txtPeriodo").val(el.periodo);
+				
 				$('#panelTabs a[href="#add"]').tab('show');
 			});
 			
 			$("#tblDatos").DataTable({
 				"responsive": true,
 				"language": espaniol,
-				"paging": true,
+				"paging": false,
 				"lengthChange": false,
 				"ordering": true,
 				"info": true,
 				"autoWidth": false
 			});
 		});
-	}
+	};
 });
