@@ -42,8 +42,8 @@ class TPlantel{
 				case 'id_plantel':
 					$this->idPlantel = $val;
 				break;
-				case 'nombre':
-					$this->nombre_pl = $val;
+				case 'nombre_pl':
+					$this->nombre = $val;
 				break;
 				case 'clave_pl':
 					$this->clave = $val;

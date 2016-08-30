@@ -21,18 +21,11 @@ switch($objModulo->getId()){
 				elseif(strtoupper($rs->fields['nip']) <> strtoupper($_POST['pass']))
 					$result = array('band' => false, 'mensaje' => 'NIP inválido');
 				else{
-					$db = TBase::conectaDB();
-					$rsAux = $db->Execute("select num_personal from usuario where num_personal = ".$rs->fields['num_personal']."");
-					
-					if ($rsAux->EOF)
-						$result = array('band' => false, 'mensaje' => 'Acceso denegado como administrador del sistema');
-					else{
-						$obj = new TUsuario($rs->fields['num_personal']);
-						if ($obj->getId() == '')
-							$result = array('band' => false, 'mensaje' => 'Acceso denegado');
-						else
-							$result = array('band' => true);
-					}
+					$obj = new TUsuario($rs->fields['num_personal']);
+					if ($obj->getId() == '')
+						$result = array('band' => false, 'mensaje' => 'Acceso denegado');
+					else
+						$result = array('band' => true);
 				}
 					
 				

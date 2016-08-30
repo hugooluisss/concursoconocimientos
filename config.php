@@ -10,6 +10,7 @@ define('STATUS', 'En desarrollo');
 define('LAYOUT_DEFECTO', 'layout/default.tpl');
 define('LAYOUT_AJAX', 'layout/update.tpl');
 define('LAYOUT_JSON', 'layout/json.tpl');
+define('LAYOUT_PLANTEL', 'layout/usuarioPlantel.tpl');
 
 #Login y su controlador
 $conf['inicio'] = array(
@@ -82,7 +83,7 @@ $conf['admonUsuarios'] = array(
 	'capa' => LAYOUT_DEFECTO);
 	
 $conf['panelPrincipal'] = array(
-	#'controlador' => 'index.php',
+	'controlador' => 'index.php',
 	'vista' => 'inicio.tpl',
 	'descripcion' => 'Vista del panel',
 	'seguridad' => true,
@@ -150,4 +151,17 @@ $conf['cdisciplinas'] = array(
 	'seguridad' => true,
 	'changeSlashes' => false,
 	'capa' => LAYOUT_AJAX);
+	
+/************************************/
+# Esto es para el usuario de plantel
+/************************************/
+$conf['inscribir'] = array(
+	'controlador' => 'inscritos.php',
+	'vista' => 'plantel/inscritos.tpl',
+	'descripcion' => 'Estudiantes inscritos con su estado dentro del sistema',
+	'seguridad' => true,
+	#'js' => array('concurso.class.js', 'disciplina.class.js'),
+	'jsTemplate' => array('inscritos.js'),
+	'capa' => LAYOUT_PLANTEL);
+
 ?>
