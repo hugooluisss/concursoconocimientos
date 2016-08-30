@@ -57,3 +57,6 @@
 		</form>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/disciplinas/panel.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/disciplinas/panelNegar.tpl"}

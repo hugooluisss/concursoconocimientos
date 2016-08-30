@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-16 10:29:45
+<?php /* Smarty version Smarty-3.1.11, created on 2016-08-18 09:59:57
          compiled from "templates/plantillas/modulos/concursos/lista.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:149862557357b331695b53b8-88582403%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '915712ba21651f50f6da6c2002c830cd65c8d063' => 
     array (
       0 => 'templates/plantillas/modulos/concursos/lista.tpl',
-      1 => 1471361263,
+      1 => 1471532388,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_57b3316965d6f0_17834900',
   'variables' => 
   array (
     'lista' => 0,
     'row' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_57b3316965d6f0_17834900',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57b3316965d6f0_17834900')) {function content_57b3316965d6f0_17834900($_smarty_tpl) {?><div class="box">
 	<div class="box-body">
@@ -49,9 +49,11 @@ $_smarty_tpl->tpl_vars["row"]->_loop = true;
 						<td><?php echo $_smarty_tpl->tpl_vars['row']->value['periodo'];?>
 </td>
 						<td class="text-right">
-							<button type="button" class="btn btn-success btn-circle" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+							<button type="button" class="btn btn-default" action="disciplinas" title="Disciplinas" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
+'><i class="fa fa-book"></i></button>
+							<button type="button" class="btn btn-success" action="modificar" title="Modificar" datos='<?php echo $_smarty_tpl->tpl_vars['row']->value['json'];?>
 '><i class="fa fa-pencil"></i></button>
-							<button type="button" class="btn btn-danger btn-circle" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idConcurso'];?>
+							<button type="button" class="btn btn-danger" action="eliminar" title="Eliminar" identificador="<?php echo $_smarty_tpl->tpl_vars['row']->value['idConcurso'];?>
 "><i class="fa fa-times"></i></button>
 						</td>
 					</tr>

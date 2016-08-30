@@ -119,7 +119,7 @@ $conf['concursos'] = array(
 	'vista' => 'concursos/panel.tpl',
 	'descripcion' => 'Vista del panel de concursos',
 	'seguridad' => true,
-	'js' => array('concurso.class.js'),
+	'js' => array('concurso.class.js', 'disciplina.class.js'),
 	'jsTemplate' => array('concursos.js'),
 	'capa' => LAYOUT_DEFECTO);
 	
@@ -135,5 +135,19 @@ $conf['listaConcursos'] = array(
 	'vista' => 'concursos/lista.tpl',
 	'descripcion' => 'Lista de concursos',
 	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['listaDisciplinas'] = array(
+	'controlador' => 'disciplinas.php',
+	'vista' => 'disciplinas/lista.tpl',
+	'descripcion' => 'Lista de disciplinas',
+	'seguridad' => true,
+	'capa' => LAYOUT_AJAX);
+	
+$conf['cdisciplinas'] = array(
+	'controlador' => 'disciplinas.php',
+	'descripcion' => 'Controlador de disciplinas',
+	'seguridad' => true,
+	'changeSlashes' => false,
 	'capa' => LAYOUT_AJAX);
 ?>

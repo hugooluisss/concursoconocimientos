@@ -21,6 +21,8 @@ TConcurso = function(){
 	};
 	
 	this.del = function(id, fn){
+		if (fn.before !== undefined) fn.before();
+		
 		$.post('cconcursos', {
 			"id": id,
 			"action": "del"
