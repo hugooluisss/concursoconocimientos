@@ -15,14 +15,14 @@
 <div class="row">
 	<div class="col-md-12 text-right">
 		<div class="btn-group">
-			<button type="button" class="btn btn-primary">Agregar estudiantes</button>
+			<button type="button" class="btn btn-primary" id="btnAgregar">Agregar estudiantes</button>
 		</div>
 	</div>
 </div>
 
 <div class="box">
 	<div class="box-body">
-		<table id="tblEstudiantes" class="table table-bordered table-hover">
+		<table id="tblInscritos" class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th>Matrícula</th>
@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{foreach from=$estudiantes item="row"}
+				{foreach from=$inscritos item="row"}
 					<tr>
 						<td>{$row.matricula}</td>
 						<td>{$row.nombre} {$row.app} {$row.apm}</td>
@@ -47,3 +47,6 @@
 		</table>
 	</div>
 </div>
+
+{include file=$PAGE.rutaModulos|cat:"modulos/plantel/winAgregar.tpl"}
+{include file=$PAGE.rutaModulos|cat:"modulos/plantel/winEstudiantes.tpl"}

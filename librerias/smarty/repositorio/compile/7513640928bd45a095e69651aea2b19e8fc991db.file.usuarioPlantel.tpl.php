@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.11, created on 2016-08-30 09:33:20
+<?php /* Smarty version Smarty-3.1.11, created on 2016-09-02 10:55:57
          compiled from "templates/plantillas/layout/usuarioPlantel.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:89155214457c599305aba92-38170581%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7513640928bd45a095e69651aea2b19e8fc991db' => 
     array (
       0 => 'templates/plantillas/layout/usuarioPlantel.tpl',
-      1 => 1472567536,
+      1 => 1472831748,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.11',
+  'unifunc' => 'content_57c599308003b7_80652460',
   'variables' => 
   array (
     'PAGE' => 0,
     'script' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.11',
-  'unifunc' => 'content_57c599308003b7_80652460',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_57c599308003b7_80652460')) {function content_57c599308003b7_80652460($_smarty_tpl) {?><!DOCTYPE html>
 <html>
@@ -93,49 +93,51 @@ templates/dist/respond.min.js"></script>
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li class="dropdown">
-								<a href="#winReactivos" id="lnkOpenReactivos">Reactivos de </a>
-							</li>
-							
-							<li><a href="?mod=instruccionesExamen&id=">Seleccionar otra sección</a></li>
-						</ul>
-					</div><!-- /.navbar-collapse -->
-					<!-- Navbar Right Menu -->
-					<div class="navbar-custom-menu">
-						<ul class="nav navbar-nav">
-							<!-- User Account Menu -->
-							<li class="dropdown user user-menu">
-								<!-- Menu Toggle Button -->
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs"><?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombre();?>
-</span>
-								</a>
-								<ul class="dropdown-menu">
-									<!-- The user image in the menu -->
-									<li class="user-header">
-										<p>
-											<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombre();?>
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="#winReactivos" id="lnkOpenReactivos">Reactivos de </a>
+								</li>
+								
+								<li><a href="?mod=instruccionesExamen&id=">Seleccionar otra sección</a></li>
+							</ul>
 
-											<small><?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getUser();?>
+						</div><!-- /.navbar-collapse -->
+						<!-- Navbar Right Menu -->
+						<div class="navbar-custom-menu">
+							<ul class="nav navbar-nav">
+								<!-- User Account Menu -->
+								<li class="dropdown user user-menu">
+									<!-- Menu Toggle Button -->
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<!-- hidden-xs hides the username on small devices so only the image appears. -->
+										<span class="hidden-xs"><?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombre();?>
+</span>
+									</a>
+									<ul class="dropdown-menu">
+										<!-- The user image in the menu -->
+										<li class="user-header">
+											<p>
+												<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getNombre();?>
+
+												<small><?php echo $_smarty_tpl->tpl_vars['PAGE']->value['usuario']->getUser();?>
 </small>
-										</p>
-									</li>
-									<!-- Menu Body -->
-									<li class="user-body">
-									</li>
-									<!-- Menu Footer-->
-									<li class="user-footer">
-										<div class="pull-right">
-											<a href="?mod=logout" class="btn btn-default btn-flat">Salir</a>
-										</div>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div><!-- /.navbar-custom-menu -->
-				</nav>
+											</p>
+										</li>
+										<!-- Menu Body -->
+										<li class="user-body">
+										</li>
+										<!-- Menu Footer-->
+										<li class="user-footer">
+											<div class="pull-right">
+												<a href="?mod=logout" class="btn btn-default btn-flat">Salir</a>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- /.navbar-custom-menu -->
+					</div>
+		 		</nav>
 			</header>
 			<!-- Full Width Column -->
 			<div class="content-wrapper">
@@ -207,6 +209,8 @@ plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
+plugins/validate/validate.es.js"></script>
     <script type="text/javascript" src="<?php echo $_smarty_tpl->tpl_vars['PAGE']->value['ruta'];?>
 plugins/validate/validate.js"></script>
     

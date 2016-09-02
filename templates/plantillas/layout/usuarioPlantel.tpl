@@ -49,46 +49,48 @@
 						</div>
 						<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-						<ul class="nav navbar-nav">
-							<li class="dropdown">
-								<a href="#winReactivos" id="lnkOpenReactivos">Reactivos de </a>
-							</li>
-							
-							<li><a href="?mod=instruccionesExamen&id=">Seleccionar otra sección</a></li>
-						</ul>
-					</div><!-- /.navbar-collapse -->
-					<!-- Navbar Right Menu -->
-					<div class="navbar-custom-menu">
-						<ul class="nav navbar-nav">
-							<!-- User Account Menu -->
-							<li class="dropdown user user-menu">
-								<!-- Menu Toggle Button -->
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<!-- hidden-xs hides the username on small devices so only the image appears. -->
-									<span class="hidden-xs">{$PAGE.usuario->getNombre()}</span>
-								</a>
-								<ul class="dropdown-menu">
-									<!-- The user image in the menu -->
-									<li class="user-header">
-										<p>
-											{$PAGE.usuario->getNombre()}
-											<small>{$PAGE.usuario->getUser()}</small>
-										</p>
-									</li>
-									<!-- Menu Body -->
-									<li class="user-body">
-									</li>
-									<!-- Menu Footer-->
-									<li class="user-footer">
-										<div class="pull-right">
-											<a href="?mod=logout" class="btn btn-default btn-flat">Salir</a>
-										</div>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div><!-- /.navbar-custom-menu -->
-				</nav>
+							<ul class="nav navbar-nav">
+								<li class="dropdown">
+									<a href="#winReactivos" id="lnkOpenReactivos">Reactivos de </a>
+								</li>
+								
+								<li><a href="?mod=instruccionesExamen&id=">Seleccionar otra sección</a></li>
+							</ul>
+
+						</div><!-- /.navbar-collapse -->
+						<!-- Navbar Right Menu -->
+						<div class="navbar-custom-menu">
+							<ul class="nav navbar-nav">
+								<!-- User Account Menu -->
+								<li class="dropdown user user-menu">
+									<!-- Menu Toggle Button -->
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<!-- hidden-xs hides the username on small devices so only the image appears. -->
+										<span class="hidden-xs">{$PAGE.usuario->getNombre()}</span>
+									</a>
+									<ul class="dropdown-menu">
+										<!-- The user image in the menu -->
+										<li class="user-header">
+											<p>
+												{$PAGE.usuario->getNombre()}
+												<small>{$PAGE.usuario->getUser()}</small>
+											</p>
+										</li>
+										<!-- Menu Body -->
+										<li class="user-body">
+										</li>
+										<!-- Menu Footer-->
+										<li class="user-footer">
+											<div class="pull-right">
+												<a href="?mod=logout" class="btn btn-default btn-flat">Salir</a>
+											</div>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</div><!-- /.navbar-custom-menu -->
+					</div>
+		 		</nav>
 			</header>
 			<!-- Full Width Column -->
 			<div class="content-wrapper">
@@ -141,6 +143,7 @@
     <script src="{$PAGE.ruta}plugins/slimScroll/jquery.slimscroll.min.js"></script>
     <!-- FastClick -->
     <script src="{$PAGE.ruta}plugins/fastclick/fastclick.min.js"></script>
+    <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.es.js"></script>
     <script type="text/javascript" src="{$PAGE.ruta}plugins/validate/validate.js"></script>
     
     <link rel="stylesheet" href="{$PAGE.ruta}plugins/datatables/dataTables.bootstrap.css">

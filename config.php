@@ -160,7 +160,7 @@ $conf['inscribir'] = array(
 	'vista' => 'plantel/inscritos.tpl',
 	'descripcion' => 'Estudiantes inscritos con su estado dentro del sistema',
 	'seguridad' => true,
-	#'js' => array('concurso.class.js', 'disciplina.class.js'),
+	'js' => array('participante.class.js'),
 	'jsTemplate' => array('inscritos.js'),
 	'capa' => LAYOUT_PLANTEL);
 
